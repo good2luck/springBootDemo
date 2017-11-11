@@ -1,6 +1,7 @@
 package top.xudj.demo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import top.xudj.demo.service.UserJdbcService;
@@ -13,6 +14,7 @@ public class UserJdbcServiceImpl implements UserJdbcService {
 
     /* 自动配置spring的jdbc */
     @Autowired
+    @Qualifier("primaryJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
 
 
