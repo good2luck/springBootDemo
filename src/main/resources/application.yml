@@ -11,3 +11,17 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+# 多彩输出
+  output:
+    ansi:
+      enabled: detect
+# 日志
+# 1、springBoot默认日志配置ERROR、WARN、INFO级别的日志输出到控制台
+# 2、日志文件会在10Mb大小的时候被截断，产生新的日志文件，默认级别为：ERROR、WARN、INFO
+# 3、log的path和file同时出现时，以file为主，且忽略path配置
+#logging:
+#  file: /Users/xudj/springBoot.log
+#  path: /Users/xudj/spring.log
+# root日志以WARN级别输出
+#  level:
+#    root: warn

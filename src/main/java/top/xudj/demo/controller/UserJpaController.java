@@ -1,5 +1,6 @@
 package top.xudj.demo.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.xudj.demo.domain.entity.UserEntity;
@@ -11,6 +12,7 @@ import top.xudj.demo.service.UserJpaService;
  */
 @RestController
 @RequestMapping("/jpa")
+@Slf4j
 public class UserJpaController {
     /**
      * Spring-data-jpa依赖于Hibernate
@@ -37,6 +39,7 @@ public class UserJpaController {
      */
     @GetMapping("/user/{id}")
     public UserEntity loadById(@PathVariable("id") String id){
+        log.debug("get loadById params for id:{}", id);
         return userJpaService.loadById(id);
     }
 

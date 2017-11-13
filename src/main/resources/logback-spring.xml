@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	<!--日志的输出格式
+		%X:输出和当前线程相关联的NDC(嵌套诊断环境)
+		%data(%d):输出日志时间点的日期或时间，默认格式为ISO8601
+		%thread(%t):输出产生该日志事件的线程名
+		%-5level:级别从左显示5个字符宽度
+		%msg:日志消息
+		%n:输出一个回车换行符
+		%p：输出日志信息的优先级
+		%logger{30}:输出日志的类,50代表包名加类名的总长度限制
+		%line:行数
+	-->
+	<property name="default_pattern"
+		value="[%X{userLoggerName}] %date{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%logger{30}:%line] - %msg%n" />
+
+	<!-- 控制台输出日志 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>${default_pattern}</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 日志记录器，日期滚动记录 -->
+	<appender name="LOGSTASH"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 正在记录的日志文件的路径及文件名 -->
+		<file>${LOG_PATH}/springBootDemo.log/</file>
+
+		<!-- 日志文件的格式 -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>${default_pattern}</pattern>
+		</encoder>
+
+		<!-- 日志记录器的滚动策略，按日期，按大小记录，归档日志可与收集日志目录不一致 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/logstash-basis-%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+			<!--&lt;!&ndash; 除按日志记录之外，还配置了日志文件不能超过2M，若超过2M，日志文件会以索引0开始，-->
+            <!--命名日志文件，例如log-error-2013-12-21.0.log &ndash;&gt;-->
+			<!--<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+				<!--<maxFileSize>2MB</maxFileSize>-->
+			<!--</timeBasedFileNamingAndTriggeringPolicy>-->
+		</rollingPolicy>
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+		</encoder>
+	</appender>
+
+	<!--<springProfile name="development">-->
+		<logger name="top.xudj.demo">
+			<level value="DEBUG" />
+			<appender-ref ref="LOGSTASH" />
+		</logger>
+
+		<logger name="org.springframework">
+			<level value="INFO" />
+		</logger>
+	<!--</springProfile>-->
+
+	<root>
+		<level value="DEBUG" />
+		<!-- <appender-ref ref="STDOUT" /> -->
+		<appender-ref ref="LOGSTASH" />
+	</root>
+	
+	<logger name="springfox">
+		<level value="ERROR"/>
+	</logger>
+	<logger name="sun.net">
+		<level value="ERROR"/>
+	</logger>
+	<logger name="com.sun">
+		<level value="ERROR" />
+	</logger>
+	<logger name="javax">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="net.sf.ehcache">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="org.hibernate">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="org.apache">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="com.alibaba.dubbo">
+		<level value="WARN" />
+	</logger>
+
+	<logger name="net.rubyeye.xmemcached">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="com.google.code">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="com.netflix">
+		<level value="ERROR" />
+	</logger>
+
+	<logger name="org.dozer">
+		<level value="ERROR" />
+	</logger>
+
+</configuration>
