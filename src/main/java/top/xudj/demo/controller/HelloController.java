@@ -15,4 +15,11 @@ public class HelloController {
         return "Hello World";
     }
 
+    @GetMapping("/hello/global/exception")
+    public String testGlobalException(){
+        // 全局异常处理测试
+        int i = 1 / 0;
+        return "exception";
+    }
+
 }
