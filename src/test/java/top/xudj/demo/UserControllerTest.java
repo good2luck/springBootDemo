@@ -3,6 +3,7 @@ package top.xudj.demo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -38,33 +39,35 @@ public class UserControllerTest {
         RequestBuilder request = null;
 
         // 1、get查询user列表，应该为空
-        request = get("/users/");
+        request = get("/users");
         mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("[]")));
 
 
         // 2、post 提交一个user
-        request = post("/users/")
-                        .param("id", "1")
-                        .param("name", "测试大师")
-                        .param("age", "20");
+        request = post("/users").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                .content("{\"id\":\"1\", \"name\":\"测试大师\", \"age\":\"20\"}".getBytes());
+//                        .param("id", "1")
+//                        .param("name", "测试大师")
+//                        .param("age", "20");
         mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("success")));
 
 
         // 3、get获取user列表，应该有刚才插入的数据
-        request = get("/users/");
+        request = get("/users");
         mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("[{\"id\":1,\"name\":\"测试大师\",\"age\":20}]")));
 
 
         // 4、put修改id为1的user
-        request = put("/users/1")
-                .param("name", "测试终极大师")
-                .param("age", "30");
+        request = put("/users/1").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                .content("{\"name\":\"测试终极大师\", \"age\":\"30\"}");
+//                .param("name", "测试终极大师")
+//                .param("age", "30");
         mvc.perform(request)
                 .andExpect(content().string(equalTo("success")));
 
@@ -82,7 +85,7 @@ public class UserControllerTest {
 
 
         // 7、get查一下user列表，应该为空
-        request = get("/users/");
+        request = get("/users");
         mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("[]")));
