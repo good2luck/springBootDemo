@@ -3,6 +3,7 @@ package top.xudj.demo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -45,10 +46,11 @@ public class UserControllerTest {
 
 
         // 2、post 提交一个user
-        request = post("/users/")
-                        .param("id", "1")
-                        .param("name", "测试大师")
-                        .param("age", "20");
+        request = post("/users/").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                    .content("{\"id\":1,\"name\":\"测试大师\",\"age\":20}");
+//                        .param("id", "1")
+//                        .param("name", "测试大师")
+//                        .param("age", "20");
         mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("success")));
@@ -62,9 +64,10 @@ public class UserControllerTest {
 
 
         // 4、put修改id为1的user
-        request = put("/users/1")
-                .param("name", "测试终极大师")
-                .param("age", "30");
+        request = put("/users/1").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                .content("{\"name\":\"测试终极大师\",\"age\":30}");
+//                .param("name", "测试终极大师")
+//                .param("age", "30");
         mvc.perform(request)
                 .andExpect(content().string(equalTo("success")));
 
