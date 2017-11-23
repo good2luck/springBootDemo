@@ -15,6 +15,12 @@ spring:
   output:
     ansi:
       enabled: detect
+  aop:
+# aop默认开启(引入依赖后)，相当于主类上添加@EnableAspectJAutoProxy.
+    auto: true
+# 当需要使用CGLIB来实现AOP的时候，需要配置spring.aop.proxy-target-class=true，不然默认使用的是标准Java的实现
+    spring.aop.proxy-target-class: false
+
 # 日志
 # 1、springBoot默认日志配置ERROR、WARN、INFO级别的日志输出到控制台
 # 2、日志文件会在10Mb大小的时候被截断，产生新的日志文件，默认级别为：ERROR、WARN、INFO
