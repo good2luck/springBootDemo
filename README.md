@@ -18,3 +18,6 @@ log4j.logger.error=errorfile
 另：如若想支持多环境下的不同日志级别，可在log4j.properties中通过配置文件中的参数引用功能进行配置，则启动不同的环境的yml文件，
 会传入不同的日志级别配置
 
+
+将日志输出到mongodb中：
+思路：使用log4mongo搭建
