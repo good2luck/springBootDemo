@@ -35,7 +35,7 @@
 
 		<!-- 日志记录器的滚动策略，按日期，按大小记录，归档日志可与收集日志目录不一致 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_PATH}/logstash-basis-%d{yyyy-MM-dd}.log
+			<fileNamePattern>${LOG_PATH}/logstash-springboot-%d{yyyy-MM-dd}.log
 			</fileNamePattern>
 			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
