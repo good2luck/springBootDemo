@@ -15,6 +15,21 @@ spring:
   output:
     ansi:
       enabled: detect
+  mail:
+    host: smtp.qq.com
+    username: xxx@qq.com
+#授权码是QQ邮箱推出的，用于登录第三方客户端的专用密码，如果开启则此处填写授权码
+    password: ughpnxownmxnbbcg
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
+
 # 日志
 # 1、springBoot默认日志配置ERROR、WARN、INFO级别的日志输出到控制台
 # 2、日志文件会在10Mb大小的时候被截断，产生新的日志文件，默认级别为：ERROR、WARN、INFO
