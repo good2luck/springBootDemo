@@ -15,6 +15,14 @@ spring:
   output:
     ansi:
       enabled: detect
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
 # 日志
 # 1、springBoot默认日志配置ERROR、WARN、INFO级别的日志输出到控制台
 # 2、日志文件会在10Mb大小的时候被截断，产生新的日志文件，默认级别为：ERROR、WARN、INFO
