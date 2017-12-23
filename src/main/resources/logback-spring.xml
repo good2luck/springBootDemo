@@ -50,14 +50,14 @@
 	</appender>
 
 	<!--<springProfile name="development">-->
-		<logger name="top.xudj.demo">
-			<level value="DEBUG" />
-			<appender-ref ref="LOGSTASH" />
-		</logger>
+	<logger name="top.xudj.demo">
+		<level value="DEBUG" />
+		<appender-ref ref="LOGSTASH" />
+	</logger>
 
-		<logger name="org.springframework">
-			<level value="INFO" />
-		</logger>
+	<logger name="org.springframework">
+		<level value="INFO" />
+	</logger>
 	<!--</springProfile>-->
 
 	<root>
