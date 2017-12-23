@@ -83,6 +83,12 @@
 			<version>4.9</version>
 		</dependency>
 
+		<!-- statemachine -->
+		<dependency>
+			<groupId>org.springframework.statemachine</groupId>
+			<artifactId>spring-statemachine-core</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 
 	</dependencies>
 
