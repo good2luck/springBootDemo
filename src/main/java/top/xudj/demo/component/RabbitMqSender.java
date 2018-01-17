@@ -71,6 +71,11 @@ public class RabbitMqSender {
     public void sendTopMsg() {
         String msg1 = "top message ------";
         log.debug("send " + msg1);
+        /**
+         * 第一个参数是：交换机的名字
+         * 第二个参数是：路由的key
+         * 第三个参数是：数据
+         */
         this.amqpTemplate.convertAndSend("exchange", RabbitConfig.topicMessage, msg1);
 
         String msg2 = "top messages ======";
@@ -85,6 +90,11 @@ public class RabbitMqSender {
     public void sendFanout() {
         String msg = "fanout msg";
         log.debug("sender:{}", msg);
+        /**
+         * 第一个参数是：交换机的名字
+         * 第二个参数是：路由的key
+         * 第三个参数是：数据
+         */
         this.amqpTemplate.convertAndSend("fanoutExchange", "abcd.ee", msg);
     }
 
