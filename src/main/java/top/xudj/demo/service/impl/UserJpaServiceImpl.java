@@ -7,8 +7,13 @@ import top.xudj.demo.domain.entity.UserEntity;
 import top.xudj.demo.domain.repository.UserRepository;
 import top.xudj.demo.service.UserJpaService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Created by xudj on 17/11/11.
+ *
+ * @author xudj
+ * @date 17/11/11
  */
 @Service
 @Slf4j
@@ -40,5 +45,12 @@ public class UserJpaServiceImpl implements UserJpaService {
         // Integer特别，字段为null，仍参与执行sql
         // 如若没有数据更新，则不执行sql
         return this.userRepository.save(user);
+    }
+
+    @Override
+    public List<String> delete(List<String> ids) {
+        List<UserEntity> userEntityList = this.userRepository.findAll(ids);
+        this.userRepository.deleteInBatch(userEntityList);
+        return new ArrayList<>();
     }
 }
