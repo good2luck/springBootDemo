@@ -27,12 +27,14 @@ public class UserJpaServiceImpl implements UserJpaService {
 
     @Override
     public UserEntity loadById(String id) {
-        return this.userRepository.findOne(id);
+        return this.userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException());
     }
 
     @Override
     public UserEntity update(String id, UserEntity userEntity) {
-        UserEntity user = this.userRepository.findOne(id);
+        UserEntity user = this.userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException());
         user.setAge(userEntity.getAge());
         user.setName(userEntity.getName());
         user.setSex(userEntity.getSex());

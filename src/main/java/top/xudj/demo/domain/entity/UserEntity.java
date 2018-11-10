@@ -11,12 +11,14 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * Created by xudj on 17/11/11.
+ *
+ * @author xudj
+ * @date 17/11/11
+ * /// null 不参与sql
  */
 @Entity
 @Table(name = "User")
 @Data
-/// null 不参与sql
 @DynamicInsert
 @DynamicUpdate
 public class UserEntity implements Serializable {
@@ -32,7 +34,9 @@ public class UserEntity implements Serializable {
 
     private Byte age;
 
-    // 时间不参与sql
+    /**
+     * 时间不参与sql
+     */
     @Column(insertable = false, updatable = false)
     private Timestamp createDate;
 
