@@ -17,7 +17,7 @@ import java.sql.Timestamp;
  * /// null 不参与sql
  */
 @Entity
-@Table(name = "User")
+@Table(name = "USER_TEST")
 @Data
 @DynamicInsert
 @DynamicUpdate

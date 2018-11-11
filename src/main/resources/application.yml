@@ -10,8 +10,11 @@ spring:
     password: root
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
+    properties:
+      hibernate.format_sql: true
+
 # 多彩输出
   output:
     ansi:
