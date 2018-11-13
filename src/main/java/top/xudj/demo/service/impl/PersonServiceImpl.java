@@ -3,6 +3,7 @@ package top.xudj.demo.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import top.xudj.demo.domain.entity.PersonEntity;
+import top.xudj.demo.domain.entity.Person_;
 import top.xudj.demo.service.PersonService;
 
 import javax.persistence.EntityManager;
@@ -120,14 +121,11 @@ public class PersonServiceImpl implements PersonService {
      */
     @Override
     public List<Object[]> array() {
-//        元模型
-//        Metamodel metamodel = entityManager.getMetamodel();
-//        EntityType<PersonEntity> pClass = metamodel.entity(PersonEntity.class);
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery query = cb.createQuery(PersonEntity.class);
         Root<PersonEntity> root = query.from(PersonEntity.class);
         // 可以用query.multiselect()包装成POJO对象
-        query.select(cb.array(root.get("name"), root.get("age")));
+        query.select(cb.array(root.get(Person_.name), root.get(Person_.age)));
         List<Object[]> list = entityManager.createQuery(query).getResultList();
         log.info("list:{}", list);
         return list;
