@@ -1,5 +1,6 @@
 package top.xudj.demo.domain.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -17,10 +18,11 @@ import java.sql.Timestamp;
  * /// null 不参与sql
  */
 @Entity
-@Table(name = "User")
+@Table(name = "USER_TEST")
 @Data
 @DynamicInsert
 @DynamicUpdate
+@Builder
 public class UserEntity implements Serializable {
 
     @Id

@@ -8,7 +8,8 @@ import top.xudj.demo.domain.entity.UserEntity;
 import java.util.List;
 
 /**
- * Created by xudj on 17/11/11.
+ * @author xudj
+ * @date 17/11/11
  */
 public interface UserRepository extends JpaRepository<UserEntity, String> {
 
