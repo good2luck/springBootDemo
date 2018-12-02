@@ -21,7 +21,7 @@ public class CheckTokenAspect {
     /**
      * 切入点
      */
-    @Pointcut("execution(public * top.xudj.demo.controller..*.*(..))")
+    @Pointcut("execution(public * top.xudj.demo.controller.UserJpaController.*(..))")
     public void checkToken() {}
 
 

@@ -19,7 +19,7 @@ spring:
 # aop默认开启(引入依赖后)，相当于主类上添加@EnableAspectJAutoProxy.
     auto: true
 # 当需要使用CGLIB来实现AOP的时候，需要配置spring.aop.proxy-target-class=true，不然默认使用的是标准Java的实现
-    spring.aop.proxy-target-class: false
+    proxy-target-class: false
 
 # 日志
 # 1、springBoot默认日志配置ERROR、WARN、INFO级别的日志输出到控制台
